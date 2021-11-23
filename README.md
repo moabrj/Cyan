@@ -1,2 +1,2 @@
 # Cyan
-## Adicionei uma brach de alguma correções que fiz após a entrega.
+## Adicionei uma brach de algumas correções que fiz após a entrega.
