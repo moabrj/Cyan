@@ -7,48 +7,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Desafio {
-//    public boolean someLibraryMethod() {
-//        return true;
-//    }
 	
-	public ArrayList<String> processaEntrada(List<String> entrada){
+	public List<String> processaEntrada(List<String> entrada){
 		ArrayList<String> saida = new ArrayList<String>();
-		
 		//percorre vetor de entrada
 		for(String texto : entrada) {
 			int i = 0;
 			String nome = new String();
 			String sobrenome = new String();
 			while(i < texto.length()) {
+				//testa casos com sobrenome
 				if(texto.charAt(i) == ' ') {
 					nome = texto.substring(0, i);
 					nome = nome.substring(0,1).toUpperCase()+nome.substring(1, nome.length());
 					if(texto.substring(i, texto.length()).length() > 0) {
 						sobrenome = texto.substring(i+1, texto.length());
-						sobrenome = sobrenome.substring(0,1).toUpperCase()+sobrenome.substring(1, sobrenome.length());
-						//System.out.println(sobrenome);
+						sobrenome = sobrenome.substring(0,1).toUpperCase()+sobrenome.substring(1, sobrenome.length())+", ";
 					}
+					break;
 				}
-				i++;
+				//testa casos sem sobrenome
+				if(i+1 == texto.length() && sobrenome.equals("")) {
+					nome = texto.substring(0, texto.length());
+					nome = nome.substring(0,1).toUpperCase()+nome.substring(1, nome.length());
+					break;
+				}
+				
+				i+=1;
 			}
-			
-			System.out.println(sobrenome+", "+nome);
-			saida.add(sobrenome+", "+nome);
-			//returna 0 caso igual, menor que 0 caso menor e maior que 0 caso maior
+			saida.add(sobrenome+nome);
 		}
 		
+		return ordernaLista(saida);
+	}
+	
+	private List<String> ordernaLista(List<String> entrada){
 		//ordenar lista
 		ArrayList<String> aux = new ArrayList<String>();
-		String menor = saida.get(0);
-		for(int i=0;i<saida.size();i++) {
-			for (int j=i;j<saida.size();j++) {
-				if(saida.get(j).compareTo(menor) < 0) {
-					menor = saida.get(j);
+		String menor;
+		for(int i=0;i<entrada.size();i++) {
+			menor = entrada.get(0);
+			for (int j=i+1;j<entrada.size();j++) {
+				if(entrada.get(j).compareTo(menor) < 0) {
+					menor = entrada.get(j);
 				}
 			}
 			aux.add(menor);
 		}
-		System.out.println(aux);
 		return aux;
 	}
     

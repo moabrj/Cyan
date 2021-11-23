@@ -3,11 +3,15 @@
  */
 package Desafio;
 
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+
+//import org.junit.Test;
 
 public class DesafioTest {
     @Test public void testSomeLibraryMethod() {
@@ -15,6 +19,6 @@ public class DesafioTest {
         List<String> input = List.of("Aline zenon", "walter Azevedo", "lucas suzuki", "tatiana");
         List<String> output = List.of("Azevedo, Walter", "Suzuki, Lucas", "Tatiana", "Zenon, Aline");
         List<String> listOutput = classUnderTest.processaEntrada(input);
-        assertEquals(output, listOutput);
+        Assertions.assertEquals(output, listOutput);
     }
 }
